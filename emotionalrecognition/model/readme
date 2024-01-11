@@ -1,0 +1,26 @@
+## Model Architecture
+
+The CNN model consists of several layers, including convolutional layers, max-pooling layers, dropout layers, and dense layers. The architecture is as follows:
+
+1. Input Layer: Convolutional layer with 32 filters and a 3x3 kernel, using ReLU activation.
+2. Max Pooling: Max pooling layer with a 2x2 pool size.
+3. Dropout: Dropout layer with a dropout rate of 0.2, applied after the first convolutional block.
+
+This pattern is repeated for two more convolutional blocks, each followed by max pooling and dropout. The last convolutional block includes an additional convolutional layer.
+
+4. **Flatten:** Flatten layer to convert the 2D output to a 1D feature vector.
+5. **Dense Layers:** Two dense layers with ReLU activation and a final output layer with softmax activation for classification into seven emotion classes.
+
+## Model Compilation
+
+The model is compiled using the Adagrad optimizer with a learning rate of 0.1 and sparse categorical cross-entropy as the loss function.
+
+## Training
+
+The model is trained on preprocessed images normalized to values between 0 and 1. The training process involves 30 epochs with a batch size of 32.
+
+## Model Saving
+
+After training, the model is saved as 'emotion_detection_model.h5'.
+
+Feel free to explore the Jupyter Notebook or Python script in this repository for more details on model training and evaluation.
