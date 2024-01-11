@@ -1,0 +1,36 @@
+Data Tokenization
+The provided function, tokenize_the_data_from_pandas, is used to tokenize the text data in the IMDb dataset. It assigns a unique integer to each word, creating a dictionary that maps words to integers. The punctuation in the text is removed before tokenization.
+
+Data Preprocessing
+The movie reviews are converted into numerical vectors using the tokenized dictionary. The sequences are padded with zeros to ensure uniform length, and the final data is split into training and testing sets.
+
+Model Architecture
+The sentiment analysis model is built with a 1D Convolutional Neural Network (CNN) in Keras. It includes embedding layers to reduce the dimensionality, convolutional layers for feature extraction, and max-pooling layers for down-sampling. The final layers consist of dense layers for classification.
+
+# 1D Convolutional Neural Network (CNN) model
+model = tf.keras.Sequential()
+model.add(tf.keras.layers.Embedding(190020, 200, input_length=2470))
+model.add(tf.keras.layers.Conv1D(32, 7, activation="relu"))
+model.add(tf.keras.layers.MaxPooling1D(5))
+model.add(tf.keras.layers.Conv1D(64, 7, activation="relu"))
+model.add(tf.keras.layers.MaxPooling1D(5))
+model.add(tf.keras.layers.Conv1D(64, 7, activation="relu"))
+model.add(tf.keras.layers.MaxPooling1D(5))
+model.add(tf.keras.layers.Flatten())
+model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
+model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
+Model Training
+The model is trained on the preprocessed IMDb dataset with 10 epochs.
+
+Model Evaluation
+The trained model is evaluated on the test set, and predictions are compared with ground truth labels.
+
+y_pred = model.predict(X_test)
+y_pred[y_pred > 0.5] = 1
+y_pred[y_pred < 0.5] = 0
+
+Results
+The model's accuracy and performance are assessed by comparing the predicted labels with the true labels.
+
+print("Correct Predictions:", Truth)
+print("Incorrect Predictions:", Falset)
