@@ -1,1 +1,2 @@
 This file includes a visual representation of the confusion matrix corresponding to the utilized models. The confusion matrix offers insights into the performance of the models on the test set, showcasing the accuracy and misclassifications across different emotion classes. For a quick assessment of model effectiveness, refer to the included confusion matrix image.
+The images attached above contain confusion matrix for models used in emotional recognition and sentiment analysis
